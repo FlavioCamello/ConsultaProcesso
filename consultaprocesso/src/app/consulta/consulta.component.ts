@@ -7,9 +7,13 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ConsultaComponent implements OnInit {
 
+  public numeroProcesso: string
   constructor() { }
 
   ngOnInit() {
   }
 
+  public consultarProcesso(): void{
+      console.log("O numero do processo é: ",this.numeroProcesso)
+  }
 }
