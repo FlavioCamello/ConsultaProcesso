@@ -2,21 +2,19 @@ import { Observable } from 'rxjs'
 import { HttpClient, HttpHeaders } from '@angular/common/http'
 import { map } from 'rxjs/operators';
 import { Injectable } from '@angular/core';
+import { Consulta } from '../Models/Consulta'
 
 @Injectable()
 export class ProcessoService{
     url: string = "https://localhost:44363/api/values"
 
-    Hheaders: HttpHeaders = new HttpHeaders()
-      .set('content-type', 'application/json')
-      .set('Accept', 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3');
-
 constructor(private http: HttpClient){
 
 }
 
-    public retornaDadosProcesso(): Observable<any>{
-        return this.http.get(this.url, {headers: this.Hheaders})
+    retornaDadosProcesso(): Observable<Consulta>{
+        return this.http.get<Consulta>(this.url)
+        .pipe(map((data: Consulta) => data))
     }
 }
 

@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Observable } from 'rxjs';
 import { ProcessoService } from '../processo.service';
+import { Consulta } from 'src/Models/Consulta';
 
 @Component({
   selector: 'app-consulta',
@@ -10,11 +11,13 @@ import { ProcessoService } from '../processo.service';
 })
 export class ConsultaComponent implements OnInit {
 
+  public objConsulta: Consulta
   public numeroProcesso: string
-  public consulta: Observable<any>
+  public consulta: Observable<Consulta>
   processoService: ProcessoService
   constructor(processoService: ProcessoService) { 
     this.processoService = processoService
+    this.objConsulta = new Consulta()
   }
 
   ngOnInit() { 
@@ -27,10 +30,13 @@ export class ConsultaComponent implements OnInit {
       this.consulta = this.processoService.retornaDadosProcesso();
 
       this.consulta.subscribe({
-        next(retorno) { console.log('Retorno: ', retorno); },
+        next(retorno) { this.objConsulta = retorno 
+          console.log('Retorno Nome: ', retorno.nome)
+          console.log('Consulta: ', this.objConsulta.ult_evento); },
         error(msg) { console.log('Error Getting Location: ', msg); }
       });
-
+      
+     
       
 
       
