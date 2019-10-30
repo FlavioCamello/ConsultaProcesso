@@ -1,26 +1,28 @@
 <div class="row justify-content-md-center">
     <div class="col-7" style="margin-top: 3rem;">
-            <label for="formGroupExampleInput">Informe o número do processo: {{objConsulta.nome}}</label>
+            <label for="formGroupExampleInput">Informe o número do processo:</label>
             <div class="row">
                 <div class="col-6">
-                    <input class="form-control" id="formGroupExampleInput" placeholder="999.999-99" (input)="numeroProcesso = $event.target.value">
+                    <input class="form-control" id="formGroupExampleInput" placeholder="999999/99" (input)="numeroProcesso = $event.target.value">
                 </div>
                 <div class="col-6">
                     <button type="button" class="btn btn-primary" (click)="consultarProcesso()">Consultar</button>
                 </div>
             </div>
-            <div *ngIf=retornouConsulta>
-            <div class="row">
-                <div class="card w-75">
+            <div *ngIf="retornouConsulta; else nenhumdado">
+            <div class="row card_processo">
+                <div class="card w-100">
                     <div class="card-body">
                       <h5 class="card-title">{{consultaView.nome}}</h5>
-                      <p class="card-text"><p>Nome: {{consultaView.nome}}</p>
-                      <p>Nome: {{consultaView.nome}}</p>
-                    </p>
+                      <p class="card-text">Numero processo: {{consultaView.processo}}</p>
+                      <p>Ultimo evento: {{consultaView.ult_evento}}</p>
+                      <p>Fase: {{consultaView.fase}}</p>
+                      <p>Area: {{consultaView.area_ha}}</p>                   
                     </div>
                   </div>
             </div>
         </div>
+        <ng-template #nenhumdado><div class="row card_processo"> {{mensagemCampoProcessos}}</div></ng-template>
     </div>
 </div>
 

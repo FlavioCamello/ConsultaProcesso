@@ -12,9 +12,10 @@ import { Consulta } from 'src/Models/Consulta';
 export class ConsultaComponent implements OnInit {
 
 
-  public consultaView: Consulta
+  public consultaView: Consulta = new Consulta()
   public numeroProcesso: string
   public consulta: Observable<Consulta>
+  public mensagemCampoProcessos: string = ""
   processoService: ProcessoService
   constructor(processoService: ProcessoService, private zone:NgZone ) { 
     this.processoService = processoService
@@ -30,13 +31,15 @@ export class ConsultaComponent implements OnInit {
   public consultarProcesso(): void{
       console.log("O numero do processo é: ",this.numeroProcesso)
       //this.retornouConsulta = true
-      this.consultaView.ult_evento = "eu mesmo"
-      this.consulta = this.processoService.retornaDadosProcesso(this.numeroProcesso.replace('/', 'barra'));
+      //this.consultaView.ult_evento = "eu mesmo"
+      this.mensagemCampoProcessos = "Pesquisando"
+      this.consulta = this.processoService.retornaDadosProcesso(this.numeroProcesso);
 
       this.consulta.subscribe((consulta: Consulta) =>{
-        console.log('Retorno Nome: ', consulta.nome)
-          this.consultaView = consulta 
-          this.retornouConsulta = true 
+        console.log('Retorno Nome: ', consulta)
+        this.mensagemCampoProcessos = (this.retornouConsulta = (this.consultaView = consulta.nome != null ? consulta : null) == null ? false : true) == true ? "" : "Não existe processo a ser exibido"
+        
+          //this.retornouConsulta = true 
         })
           // error(msg) { console.log('Error Getting Location: ', msg); }
         
