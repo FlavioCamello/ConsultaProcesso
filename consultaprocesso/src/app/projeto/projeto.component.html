@@ -1,0 +1,18 @@
+<app-topo></app-topo>
+
+<button type="button" class="btn btn-primary"  data-toggle="modal" data-target="#modalAdicionarProcesso">Adicionar processo</button>
+
+<div class="row justify-content-md-center" *ngFor="let processo of processos">
+<div class="row card_processo" >
+        <div class="card w-100">
+            <div class="card-body">
+              <h5 class="card-title">{{processo.processo.nome}}</h5>
+              <p class="card-text">Numero processo: {{processo.processo.processo}}</p>
+              <p>Ultimo evento: {{processo.processo.ult_evento}}</p>
+              <p>Fase: {{processo.processo.fase}}</p>
+              <p>Area: {{processo.processo.area_ha}}</p>                   
+            </div>
+          </div>
+    </div>
+</div>
+<app-modal-incluir-processo></app-modal-incluir-processo>

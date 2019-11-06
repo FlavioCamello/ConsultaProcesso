@@ -1,0 +1,45 @@
+    <div class="modal fade bd-example-modal-xl" id="modalAdicionarProcesso" tabindex="-1" role="dialog" aria-labelledby="myExtraLargeModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-xl">
+            <div class="modal-content">
+                    <div class="modal-header">
+                            <h5 class="modal-title" id="exampleModalLabel">Adicionar Processo</h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Fechar">
+                            <span aria-hidden="true">&times;</span>
+                            </button>
+                            </div>
+                        <div class="modal-body">
+                                <div class="row justify-content-md-center">
+                                        <div class="col-7" style="margin-top: 3rem;">
+                                                <label for="formGroupExampleInput">Informe o número do processo:</label>
+                                                <div class="row">
+                                                    <div class="col-6">
+                                                        <input class="form-control" id="formGroupExampleInput" type="number" placeholder="ex: 8902502018" (input)="numeroProcesso = $event.target.value" >
+                                                    </div>
+                                                    <div class="col-6">
+                                                        <button type="button" class="btn btn-primary" (click)="consultarProcesso()">Consultar</button>
+                                                    </div>
+                                                </div>
+                                                <div *ngIf="retornouConsulta; else nenhumdado">
+                                                <div class="row card_processo">
+                                                    <div class="card w-100">
+                                                        <div class="card-body">
+                                                            <h5 class="card-title">{{consultaView.nome}}</h5>
+                                                            <p class="card-text">Numero processo: {{consultaView.processo}}</p>
+                                                            <p>Ultimo evento: {{consultaView.ult_evento}}</p>
+                                                            <p>Fase: {{consultaView.fase}}</p>
+                                                            <p>Area: {{consultaView.area_ha}}</p>                   
+                                                        </div>
+                                                        </div>
+                                                </div>
+                                            </div>
+                                            <ng-template #nenhumdado><div class="row card_processo"> {{mensagemCampoProcessos}}</div></ng-template>
+                                        </div>
+                                    </div>             
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
+                            <button type="submit" class="btn btn-primary" (click)="adicionarProcessoAoProjeto()">Adicionar</button>
+                        </div>
+            </div>
+            </div>
+        </div>

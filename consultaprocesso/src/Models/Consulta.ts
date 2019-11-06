@@ -12,7 +12,6 @@ export class Consulta{
         UF: string
         fid: string
         
-
         constructor(){
              this.nome = "";
              this.area_ha = "";

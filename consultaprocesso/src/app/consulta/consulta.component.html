@@ -1,9 +1,10 @@
+<app-topo></app-topo>
 <div class="row justify-content-md-center">
     <div class="col-7" style="margin-top: 3rem;">
             <label for="formGroupExampleInput">Informe o número do processo:</label>
             <div class="row">
                 <div class="col-6">
-                    <input class="form-control" id="formGroupExampleInput" placeholder="999999/99" (input)="numeroProcesso = $event.target.value">
+                    <input class="form-control" id="formGroupExampleInput" type="number" placeholder="ex: 8902502018" (input)="numeroProcesso = $event.target.value" >
                 </div>
                 <div class="col-6">
                     <button type="button" class="btn btn-primary" (click)="consultarProcesso()">Consultar</button>
