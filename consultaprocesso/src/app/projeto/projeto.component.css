@@ -1,4 +1,22 @@
 .card_processo{
-    padding-top: 3rem;
-    min-width: 30rem;
+    /* padding-top: 3rem; */
+    width: 100%;
+}
+
+.rowBotaoCriarProjeto{
+    padding-top: 3rem; 
+    padding-bottom: 2rem;
+}
+
+.containerPai{
+    padding-left: 4rem;
+    padding-right: 4rem;
+}
+
+.tituloCampo{
+    font-size: 8pt; 
+}
+
+.valorCampo{
+    font-size: 10pt;
 }

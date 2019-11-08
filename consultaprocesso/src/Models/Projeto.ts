@@ -5,5 +5,6 @@ export class Projeto{
     email_usuario: string
     key: string
     processos: Consulta[]
+    cor: string
 }
 

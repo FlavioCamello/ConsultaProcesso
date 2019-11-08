@@ -1,5 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl } from '@angular/forms';
+import { Router } from '@angular/router';
+import { ConsultaComponent } from '../consulta/consulta.component';
+import { Consulta } from 'src/Models/Consulta';
 
 @Component({
   selector: 'app-topo',
@@ -7,15 +10,20 @@ import { FormGroup, FormControl } from '@angular/forms';
   styleUrls: ['./topo.component.css']
 })
 export class TopoComponent implements OnInit {
+  
+  public pesquisa: string
   public formulario: FormGroup = new FormGroup({
     'pesquisa': new FormControl()
   })
-  constructor() { }
+  constructor(private router: Router) { }
 
   ngOnInit() {
   }
 
   public pesquisarProcesso(): void{
-    console.log(this.formulario.value.pesquisa)
+    var consulta: Consulta = new Consulta()
+    consulta.processo = this.formulario.value.pesquisa 
+    this.router.navigate(['/consulta'], 
+    {queryParams: consulta});
   }
 }

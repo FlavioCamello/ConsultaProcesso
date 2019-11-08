@@ -1,29 +1,75 @@
 <app-topo></app-topo>
+<ngx-spinner></ngx-spinner>
+<div class="containerPai">
 <div class="row justify-content-md-center">
-    <div class="col-7" style="margin-top: 3rem;">
-            <label for="formGroupExampleInput">Informe o número do processo:</label>
-            <div class="row">
-                <div class="col-6">
-                    <input class="form-control" id="formGroupExampleInput" type="number" placeholder="ex: 8902502018" (input)="numeroProcesso = $event.target.value" >
-                </div>
-                <div class="col-6">
-                    <button type="button" class="btn btn-primary" (click)="consultarProcesso()">Consultar</button>
-                </div>
-            </div>
-            <div *ngIf="retornouConsulta; else nenhumdado">
-            <div class="row card_processo">
-                <div class="card w-100">
-                    <div class="card-body">
-                      <h5 class="card-title">{{consultaView.nome}}</h5>
-                      <p class="card-text">Numero processo: {{consultaView.processo}}</p>
-                      <p>Ultimo evento: {{consultaView.ult_evento}}</p>
-                      <p>Fase: {{consultaView.fase}}</p>
-                      <p>Area: {{consultaView.area_ha}}</p>                   
+        <div *ngIf="retornouConsulta; else nenhumdado">
+                <div class="card border-info mb-3 card_processo">
+                    <div class="card w-100">
+                        <div class="card-body">
+                            <h5 class="card-title">{{consultaView.processo}} - {{consultaView.fase}}</h5>
+                            <div class="row">
+                                <div class="col-sm-5">
+                                    <div class="tituloCampo">Ultimo evento:</div>
+                                    <div class="row">
+                                        <div class="col-12 col-sm-12">
+                                            <div class="valorCampo">{{consultaView.ult_evento}}</div>
+                                        </div>
+                                    </div>
+
+                                </div>
+
+                                <div class="col-sm-3">
+                                    <div class="tituloCampo">Fase:</div>
+                                    <div class="row">
+                                        <div class="col-12 col-sm-12">
+                                            <div class="valorCampo">{{consultaView.fase}}</div>
+                                        </div>
+                                    </div>
+
+                                </div>
+
+                                <div class="col-sm-2">
+                                    <div class="tituloCampo">Substancia:</div>
+                                    <div class="row">
+                                        <div class="col-12 col-sm-12">
+                                            <div class="valorCampo">{{consultaView.subs}}</div>
+                                        </div>
+                                    </div>
+
+                                </div>
+
+                                <div class="col-sm-1">
+                                    <div class="tituloCampo">Área:</div>
+                                    <div class="row">
+                                        <div class="col-12 col-sm-12">
+                                            <div class="valorCampo">{{consultaView.area_ha}} ha</div>
+                                        </div>
+                                    </div>
+
+                                </div>
+
+                                <div class="col-sm-1">
+                                    <div class="tituloCampo">UF:</div>
+                                    <div class="row">
+                                        <div class="col-12 col-sm-12">
+                                            <div class="valorCampo">{{consultaView.UF}}</div>
+                                        </div>
+                                    </div>
+
+                                </div>
+
+                            </div>
+                        </div>
                     </div>
-                  </div>
-            </div>
+              
+            
+
+
+
         </div>
-        <ng-template #nenhumdado><div class="row card_processo"> {{mensagemCampoProcessos}}</div></ng-template>
+        <ng-template #nenhumdado>
+            <div class="row"> {{mensagemCampoProcessos}}</div>
+        </ng-template>
     </div>
 </div>
-
+</div>

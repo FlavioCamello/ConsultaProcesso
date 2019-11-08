@@ -1,0 +1,21 @@
+.rowBotaoCriarProjeto{
+    padding-top: 3rem; 
+}
+
+.containerPai{
+    padding-left: 3rem;
+    padding-right: 4rem;
+}
+
+
+.rowProjetos{
+    padding-top: 3rem;
+}
+
+.cardProjeto { 
+    transition: all .2s ease-in-out; 
+    }
+
+.cardProjeto:hover{
+    transform: scale(1.07);
+}

@@ -1,18 +1,72 @@
 <app-topo></app-topo>
+<div class="containerPai">
+  <div class="row justify-content-start rowBotaoCriarProjeto">
+    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#modalAdicionarProcesso">Adicionar
+      processo</button>
+  </div>
+  <div class="row justify-content-md-center" *ngFor="let processo of processos">
+    <div class="card border-info mb-3 card_processo">
+      <div class="card w-100">
+        <div class="card-body">
+          <h5 class="card-title">{{processo.processo.processo}} - {{processo.processo.fase}}</h5>
 
-<button type="button" class="btn btn-primary"  data-toggle="modal" data-target="#modalAdicionarProcesso">Adicionar processo</button>
+          <div class="row">
+            <div class="col-sm-5">
+              <div class="tituloCampo">Ultimo evento:</div>
+              <div class="row">
+                <div class="col-12 col-sm-12">
+                  <div class="valorCampo">{{processo.processo.ult_evento}}</div>
+                </div>
+              </div>
 
-<div class="row justify-content-md-center" *ngFor="let processo of processos">
-<div class="row card_processo" >
-        <div class="card w-100">
-            <div class="card-body">
-              <h5 class="card-title">{{processo.processo.nome}}</h5>
-              <p class="card-text">Numero processo: {{processo.processo.processo}}</p>
-              <p>Ultimo evento: {{processo.processo.ult_evento}}</p>
-              <p>Fase: {{processo.processo.fase}}</p>
-              <p>Area: {{processo.processo.area_ha}}</p>                   
             </div>
+
+            <div class="col-sm-3">
+              <div class="tituloCampo">Fase:</div>
+              <div class="row">
+                <div class="col-12 col-sm-12">
+                  <div class="valorCampo">{{processo.processo.fase}}</div>
+                </div>
+              </div>
+
+            </div>
+
+            <div class="col-sm-2">
+              <div class="tituloCampo">Substancia:</div>
+              <div class="row">
+                <div class="col-12 col-sm-12">
+                  <div class="valorCampo">{{processo.processo.subs}}</div>
+                </div>
+              </div>
+
+            </div>
+
+            <div class="col-sm-1">
+              <div class="tituloCampo">Área:</div>
+              <div class="row">
+                <div class="col-12 col-sm-12">
+                  <div class="valorCampo">{{processo.processo.area_ha}} ha</div>
+                </div>
+              </div>
+
+            </div>
+
+            <div class="col-sm-1">
+              <div class="tituloCampo">UF:</div>
+              <div class="row">
+                <div class="col-12 col-sm-12">
+                  <div class="valorCampo">{{processo.processo.UF}}</div>
+                </div>
+              </div>
+
+            </div>
+
           </div>
+
+
+        </div>
+      </div>
     </div>
+  </div>
+  <app-modal-incluir-processo></app-modal-incluir-processo>
 </div>
-<app-modal-incluir-processo></app-modal-incluir-processo>

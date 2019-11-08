@@ -16,8 +16,6 @@ constructor(private http: HttpClient){
         return this.http.get<Consulta>(this.url + '/' +nProcesso)
         .pipe(map((data: Consulta) => data))
     }
-    
-    
 }
 
 //https://aluracar.herokuapp.com/salvarpedido?carro=Astra+Sedan&email=asdasd&endereco=Asd&nome=TIago&preco=40300

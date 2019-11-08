@@ -1,8 +1,9 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, EventEmitter, Output, ElementRef, ViewChild } from '@angular/core';
 import { FormGroup, FormControl } from '@angular/forms';
 import { Bd } from 'src/services/bd.service';
 import { Autenticacao } from 'src/services/autenticacao.service';
 import { Projeto } from 'src/Models/Projeto';
+
 
 
 @Component({
@@ -15,6 +16,8 @@ export class IncluirProjetoComponent implements OnInit {
   public formulario: FormGroup = new FormGroup({
     'titulo': new FormControl()
   })
+  @ViewChild('closeBtn', {static: false}) closeBtn: ElementRef;
+  @Output() public atualizarTelaMeusProjetos: EventEmitter<any> = new EventEmitter<any>()
 
   constructor(private bd: Bd,
     private autenticacao: Autenticacao) { }
@@ -28,5 +31,13 @@ export class IncluirProjetoComponent implements OnInit {
     projeto.email_usuario = this.userEmail
     projeto.titulo = this.formulario.value.titulo
     this.bd.criarProjeto(projeto)
+    
+    this.fecharModal()
+
+    this.atualizarTelaMeusProjetos.emit()
+  }
+
+  private fecharModal(): void{
+    this.closeBtn.nativeElement.click();
   }
 }

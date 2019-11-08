@@ -13,10 +13,12 @@ import { BannerComponent } from './acesso/banner/banner.component';
 import { Autenticacao } from 'src/services/autenticacao.service';
 import { TopoComponent } from './topo/topo.component';
 import { AutenticacaoGuard } from 'src/services/autenticacao-guard.service';
-import { IncluirProjetoComponent } from './incluir-projeto/incluir-projeto.component';
+import { IncluirProjetoComponent } from './meus-processos/incluir-projeto/incluir-projeto.component';
 import { Bd } from 'src/services/bd.service';
 import { ProjetoComponent } from './projeto/projeto.component';
 import { ModalIncluirProcessoComponent } from './modal-incluir-processo/modal-incluir-processo.component';
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+import { NgxSpinnerModule } from "ngx-spinner";
 
 @NgModule({
   declarations: [
@@ -36,6 +38,8 @@ import { ModalIncluirProcessoComponent } from './modal-incluir-processo/modal-in
     BrowserModule,
     AppRoutingModule,
     ReactiveFormsModule,
+    FontAwesomeModule,
+    NgxSpinnerModule,
     HttpClientModule 
   ],
   providers: [ Autenticacao, AutenticacaoGuard, Bd ],

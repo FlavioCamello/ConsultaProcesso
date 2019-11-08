@@ -1,20 +1,26 @@
 <app-topo></app-topo>
-<button type="button" class="btn btn-primary"  data-toggle="modal" data-target="#modalExemplo">Criar projeto</button>
+<ngx-spinner type="ball-fussion"></ngx-spinner>
+<div class="containerPai">
 
+        <div class="row justify-content-start rowBotaoCriarProjeto">
+                <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#modalExemplo">Criar projeto</button>
+        </div>
 
-<div>
-        <div class="row">
-<div class="card col-4 col-sm-4 col-md-4 col-lg-4 text-white bg-info col-sm" *ngFor="let projeto of projetos" style="max-width: 25rem; margin: 2rem;">
-        <!-- <div class="card-header">{{projeto.titulo}} </div> -->
-         <div class="card-body" (click)=abrirTelaProjeto(projeto);>
-          <h5 class="card-title">{{projeto.titulo}}</h5>
-          <!-- <p class="card-text">Um exemplo de texto rápido para construir o título do card e fazer preencher o conteúdo do card.</p> -->
-        </div> 
-      </div>
+        <div class="row rowProjetos">
+                <div class="col-4 col-sm-4 col-md-4 col-lg-4" *ngFor="let projeto of projetos; let i = index"
+                        style="cursor: pointer">
+                        <div class="card mb-3 cardProjeto" style="max-width: 20rem; border-color: #AAAAAA;"
+                                (click)=abrirTelaProjeto(projeto);>
+                                <div class="card-header" [ngStyle]="getColor(i)"><fa-icon [icon]="faFolder"></fa-icon> {{projeto.titulo}}</div>
+                                <div class="card-body">
+                                        <p class="card-text" style="font-size: 8pt;">
+                                                <fa-icon [icon]="faFile" [ngStyle]="getStyleIcon(i)"></fa-icon>
+                                                {{getTamanhoArrayProcessos(projeto.processos)}} processos
+                                        </p>
+                                </div>
+                        </div>
+                </div>
+        </div>
+        <app-incluir-projeto (atualizarTelaMeusProjetos)="atualizarTelaMeusProjetos()"></app-incluir-projeto>
+
 </div>
-</div>
-
-<!-- <li *ngFor="let projeto of projetos; index as i; first as isFirst">
-        {{i}}/{{projetos.length}}. {{projeto}} <span *ngIf="isFirst">default</span>
-      </li> -->
-<app-incluir-projeto></app-incluir-projeto>
